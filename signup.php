@@ -1,13 +1,28 @@
 <?php
 // Insert the page header
 $page_title = 'Sign Up';
-require_once('header.php');
+?>
 
-require_once('appvars.php');
-require_once('connectvars.php');
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <?php
+    echo '<title>TrendIt - ' . $page_title . '</title>';
+    ?>
+
+    <link rel="stylesheet" type="text/css" href="login_style.css" />
+</head>
+<body>
+
+<?php
+
+echo '<h3>TrendIt - ' . $page_title . '</h3>';
 
 // Connect to the database
-$dbh = new PDO('mysql:host=localhost;dbname=mismatchdb', 'root', 'root');
+$dbh = new PDO('mysql:host=localhost;dbname=trenditdb', 'root', 'root');
 
 if (isset($_POST['submit'])) {
     // Grab the profile data from the POST
@@ -17,7 +32,7 @@ if (isset($_POST['submit'])) {
 
     if (!empty($username) && !empty($password1) && !empty($password2) && ($password1 == $password2)) {
         // Make sure someone isn't already registered using this username
-        $query = "SELECT * FROM mismatch_user WHERE username = :username";
+        $query = "SELECT * FROM users WHERE username = :username";
         $stmt = $dbh->prepare($query);
         $stmt->execute(array(
             'username' => $username
@@ -25,7 +40,7 @@ if (isset($_POST['submit'])) {
         $result= $stmt->fetchAll();
         if (count($result) == 0) {
             // The username is unique, so insert the data into the database
-            $query = "INSERT INTO mismatch_user (username, password, join_date) VALUES (:username, SHA(:password1), NOW())";
+            $query = "INSERT INTO users (username, password, join_date) VALUES (:username, SHA(:password1), NOW())";
             $stmt = $dbh->prepare($query);
             $stmt->execute(array(
                 'username' => $username,
@@ -63,8 +78,3 @@ if (isset($_POST['submit'])) {
     </fieldset>
     <input type="submit" value="Sign Up" name="submit" />
 </form>
-
-<?php
-// Insert the page footer
-require_once('footer.php');
-?>
