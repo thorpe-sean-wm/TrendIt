@@ -1,0 +1,174 @@
+/*Basic CSS */
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+p, h1, h2, h3, h4, h5, h6, a{
+    font-family: 'Muli', sans-serif;
+}
+
+p{
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    transition: color .25s ease-in-out;
+    -moz-transition: color .25s ease-in-out;
+    -webkit-transition: color .25s ease-in-out;
+}
+
+a :visited {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #999;
+}
+
+/*Class CSS */
+
+.headerCont{
+    width: 100%;
+    margin: 0 auto;
+    min-height: 80px;
+    background-color: #edffdb;
+    border-bottom: #d5dcda 2px solid;
+}
+
+.header{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ffed1a;
+    max-width: 1080px;
+    padding: 0 10px;
+}
+
+.navbar{
+    float: left;
+    margin: 0 auto;
+    height: 100%;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.navbar a{
+    padding-left: 5px;
+    padding-right: 5px;
+    vertical-align: baseline;
+}
+
+.container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.content{
+    margin: 0 auto;
+    width: 990px;
+    background-color: #f4f4f4;
+    min-height: 521px;
+}
+
+.footerCont{
+    min-height: 80px;
+    background-color: #f7f7f7;
+    border-top: #d5dcda 2px solid;;
+}
+
+.footer{
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1080px;
+    padding: 0 10px;
+}
+
+/*ID CSS */
+
+/*Specific CSS */
+
+.mButton{
+    font-size: 14px;
+    min-width: 100px;
+    min-height: 32px;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 20px;
+    color: #94CEBA;
+    background-color: #4F3A3c;
+    border: #3d2c2d 2px solid;
+    position: relative;
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+}
+
+.mButton:hover{
+    background-color: #94CEBA;
+    color: #4F3A3c;
+    border: #3d2c2d 2px solid;
+}
+
+form {
+    text-align: center;
+}
+
+.formInput {
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 400px;
+    font-size: 25px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #bcbcbc;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #bcbcbc;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #bcbcbc;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #bcbcbc;
+}
+
+.signUp {
+    background-color:#6bbda0;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: 'Muli', sans-serif;
+    font-size:20px;
+    padding:9px 169px;
+    text-decoration:none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.logIn {
+    background-color:#6bbda0;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: 'Muli', sans-serif;
+    font-size:20px;
+    padding:9px 178px;
+    text-decoration:none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

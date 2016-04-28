@@ -56,38 +56,40 @@ $page_title = 'Log In';
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <?php
-    echo '<title>TrendIt - ' . $page_title . '</title>';
-    ?>
-
     <link rel="stylesheet" type="text/css" href="login_style.css" />
 </head>
 <body>
+<div class="headerCont">
+    <div class="header">
+        <div class="navbar">
+            <a href="javascript:history.go(-1)"><button class="mButton">Back</button></a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="content">
+        <?php
+        echo '<h3>TrendIt - ' . $page_title . '</h3>';
 
-<?php
-echo '<h3>TrendIt - ' . $page_title . '</h3>';
+        // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
+        if (empty($_SESSION['user_id'])) {
+            echo '<p class="error">' . $error_msg . '</p>';
+            ?>
 
-// If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
-if (empty($_SESSION['user_id'])) {
-    echo '<p class="error">' . $error_msg . '</p>';
-    ?>
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <input type="text" name="username" value="<?php if (!empty($user_username)) echo $user_username; ?>" placeholder="Username" class="formInput" /><br />
+                    <input type="password" name="password" placeholder="Password" class="formInput" /> <br>
+                <input type="submit" value="Log In" name="submit" class="logIn" />
+            </form>
 
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <fieldset>
-            <legend>Log In</legend>
-            <label for="username">Username:</label>
-            <input type="text" name="username" value="<?php if (!empty($user_username)) echo $user_username; ?>" /><br />
-            <label for="password">Password:</label>
-            <input type="password" name="password" />
-        </fieldset>
-        <input type="submit" value="Log In" name="submit" />
-    </form>
-
-    <?php
-}
-else {
-    // Confirm the successful log-in
-    echo('<p class="login">You are logged in as ' . $_SESSION['username'] . '.</p>');
-}
-?>
+            <?php
+        }
+        else {
+            // Confirm the successful log-in
+            echo('<p class="login">You are logged in as ' . $_SESSION['username'] . '.</p>');
+        }
+        ?>
+    </div>
+</div>
+</body>
+</html>
