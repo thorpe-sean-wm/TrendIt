@@ -6,5 +6,6 @@
             <a href="login.php"><button class="mButton">Log In</button></a>
             <a href="signup.php"><button class="mButton">Sign Up</button></a>
         </nav>
+        <img id="logo" src="images/trendit.png" height="100px" alt="Trend It">
     </div>
 </div>
