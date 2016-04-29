@@ -1,2 +1,2 @@
 # TrendIt
-Social media webite for the Final Project
+Social media website for the Final Project
