@@ -39,7 +39,7 @@ $page_title = 'Sign Up';
             $password2 = ($_POST['password2']);
             $email = ($_POST['email']);
 
-            if (!empty($username) && !empty($password1) && !empty($password2) && ($password1 == $password2)) {
+            if (!empty($username) && !empty($password1) && !empty($password2) && ($password1 == $password2) && !empty($email)) {
                 // Make sure someone isn't already registered using this username
                 $query = "SELECT * FROM users WHERE username = :username";
                 $stmt = $dbh->prepare($query);
@@ -47,7 +47,15 @@ $page_title = 'Sign Up';
                     'username' => $username
                 ));
                 $result= $stmt->fetchAll();
-                if (count($result) == 0) {
+
+                $query1 = "SELECT * FROM users WHERE email = :email";
+                $stmt1 = $dbh->prepare($query);
+                $stmt1->execute(array(
+                    'email' => $email
+                ));
+                $result1 = $stmt->fetchAll();
+
+                if (count($result) == 0 && count($result1) == 0) {
                     // The username is unique, so insert the data into the database
                     $query = "INSERT INTO users (username, password, email, joinDate) VALUES (:username, SHA(:password1), :email, NOW())";
                     $stmt = $dbh->prepare($query);
