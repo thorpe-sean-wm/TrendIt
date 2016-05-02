@@ -15,94 +15,93 @@ require_once "header.php";
 ?>
 <div class="container">
     <div class="content">
+        <div id="w">
+            <div id="content" class="clearfix">
+                <div id="userphoto"><img src="images/avatar.png" alt="default avatar"></div>
+                <h1>Minimal User Profile Layout</h1>
 
+                <nav id="profiletabs">
+                    <ul class="clearfix">
+                        <li><a href="#bio" class="sel">Bio</a></li>
+                        <li><a href="#activity">Activity</a></li>
+                        <li><a href="#friends">Friends</a></li>
+                        <li><a href="#settings">Settings</a></li>
+                    </ul>
+                </nav>
+
+                <section id="bio">
+                    <p>Paul</p>
+
+                    <p>Blah bleh blah bleh blah.</p>
+
+                    <p>Woof Woof bark bark wruff wruff.</p>
+                </section>
+
+                <section id="activity" class="hidden">
+                    <p>Most recent actions:</p>
+
+                    <p class="activity">@10:15PM - Submitted a news article</p>
+
+                    <p class="activity">@9:50PM - Submitted a news article</p>
+
+                    <p class="activity">@8:15PM - Posted a comment</p>
+
+                    <p class="activity">@4:30PM - Added <strong>someusername</strong> as a friend</p>
+
+                    <p class="activity">@12:30PM - Submitted a news article</p>
+                </section>
+
+                <section id="friends" class="hidden">
+                    <p>Friends list:</p>
+
+                    <ul id="friendslist" class="clearfix">
+                        <li><a href="#"><img src="images/avatar.png" width="22" height="22"> Username</a></li>
+                        <li><a href="#"><img src="images/avatar.png" width="22" height="22"> SomeGuy123</a></li>
+                        <li><a href="#"><img src="images/avatar.png" width="22" height="22"> PurpleGiraffe</a></li>
+                    </ul>
+                </section>
+
+                <section id="settings" class="hidden">
+                    <p>Edit your user settings:</p><a href="editprofile.php"><img src="images/edit.png"></a>
+
+                    <p class="setting"><span>E-mail Address |</span> lolno@gmail.com</p>
+
+                    <p class="setting"><span>Language |</span> English(US)</p>
+
+                    <p class="setting"><span>Profile Status |</span> Public</p>
+
+                    <p class="setting"><span>Update Frequency |</span> Weekly</p>
+
+                    <p class="setting"><span>Connected Accounts |</span> None</p>
+                </section>
+            </div><!-- @end #content -->
+        </div><!-- @end #w -->
+        <script type="text/javascript">
+            $(function(){
+                $('#profiletabs ul li a').on('click', function(e){
+                    e.preventDefault();
+                    var newcontent = $(this).attr('href');
+
+                    $('#profiletabs ul li a').removeClass('sel');
+                    $(this).addClass('sel');
+
+                    $('#content section').each(function(){
+                        if(!$(this).hasClass('hidden')) { $(this).addClass('hidden'); }
+                    });
+
+                    $(newcontent).removeClass('hidden');
+                });
+            });
+        </script>
     </div>
 </div>
 <?php
 require_once "footer.php";
 ?>
 
-<?php
-
-// Insert the page header
-$page_title = 'View Profile';
-require_once('header.php');
-
-require_once('appvars.php');
-require_once('connectvars.php');
-
-// Make sure the user is logged in before going any further.
-if (!isset($_SESSION['userID'])) {
-    echo '<p class="login">Please <a href="login.php">log in</a> to access this page.</p>';
-    exit();
-}
-
-// Show the navigation menu
-require_once('index.php');
-
-// Connect to the database
-$dbh = new PDO('mysql:host=localhost;dbname=trenditdb', 'root', 'root');
-
-// Grab the profile data from the database
-if (!isset($_GET['userID'])) {
-    $query = "SELECT username, password, email, joinDate, firstName, lastName , birthday , gender, phoneNumber, picture FROM trenditdb.users WHERE user_id = :userID";
-}
-else {
-    $query = "SELECT username, password, email, joinDate, firstName, lastName , birthday , gender, phoneNumber, picture FROM trenditdb.users WHERE user_id = :userID";
-}
-$stmt = $dbh->prepare($query);
-$stmt = $stmt->execute();
 
 
-if (count($data) == 1) {
-    // The user row was found so display the user data
-    $row = $data[0];
-    echo '<table>';
-    if (!empty($row['username'])) {
-        echo '<tr><td class="label">Username:</td><td>' . $row['username'] . '</td></tr>';
-    }
-    if (!empty($row['first_name'])) {
-        echo '<tr><td class="label">First name:</td><td>' . $row['firstName'] . '</td></tr>';
-    }
-    if (!empty($row['last_name'])) {
-        echo '<tr><td class="label">Last name:</td><td>' . $row['lastName'] . '</td></tr>';
-    }
-    if (!empty($row['gender'])) {
-        echo '<tr><td class="label">Gender:</td><td>';
-        if ($row['gender'] == 'M') {
-            echo 'Male';
-        }
-        else if ($row['gender'] == 'F') {
-            echo 'Female';
-        }
-        else {
-            echo '?';
-        }
-        echo '</td></tr>';
-    }
-    if (!empty($row['birthday'])) {
-        if (!isset($_GET['userID']) || ($_SESSION['userID'] == $_GET['userID'])) {
-            // Show the user their own birthdate
-            echo '<tr><td class="label">Birthdate:</td><td>' . $row['birthday'] . '</td></tr>';
-        }
-    }
-    if (!empty($row['email'])) {
-        echo '<tr><td class="label">Email:</td><td>' . $row['email'] . '</td></tr>';
-    }
-    if (!empty($row['picture'])) {
-        echo '<tr><td class="label">Picture:</td><td><img src="' . MM_UPLOADPATH . $row['picture'] .
-            '" alt="Profile Picture" /></td></tr>';
-    }
-    echo '</table>';
-    if (!isset($_GET['userID']) || ($_SESSION['userID'] == $_GET['userID'])) {
-        echo '<p>Would you like to <a href="editprofile.php">edit your profile</a>?</p>';
-    }
-} // End of check for a single row of user results
-else {
-    echo '<p class="error">There was a problem accessing your profile.</p>';
-}
 
-?>
 
 <?php
 // Insert the page footer
