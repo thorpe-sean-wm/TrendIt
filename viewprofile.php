@@ -30,7 +30,7 @@ require_once "header.php";
                 </nav>
 
                 <section id="bio">
-                    <p>Paul</p>
+                    <?php echo '$username';  ?>
 
                     <p>Blah bleh blah bleh blah.</p>
 
@@ -99,14 +99,6 @@ require_once "header.php";
 require_once "footer.php";
 ?>
 
-
-
-
-
-<?php
-// Insert the page footer
-require_once('footer.php');
-?>
 
 
 
