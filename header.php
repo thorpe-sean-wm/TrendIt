@@ -5,10 +5,10 @@ session_start();
     <div class="header">
         <nav class="navbar">
             <a href="index.php"><button class="mButton">Home</button></a>
-            <a href="index.php"><button class="mButton">Profile</button></a>
+            <a href="viewprofile.php"><button class="mButton">Profile</button></a>
             <a href="search.php"><button class="mButton">Search</button></a>
             <?php
-            if(isset($_SESSION['user_id'])){
+            if(isset($_SESSION['userId'])){
                 echo '<a href="logout.php"><button class="mButton">Log Out</button></a>';
             }
             else{

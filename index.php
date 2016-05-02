@@ -23,6 +23,5 @@ require_once "footer.php";
 ?>
 </body>
 
-<a href="viewprofile.php">Hey</a>
 
 </html>
