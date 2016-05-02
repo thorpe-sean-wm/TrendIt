@@ -14,11 +14,11 @@ if (!isset($_SESSION['user_id'])) {
 
         // Grab the user-entered log-in data
         $user_username = trim($_POST['username']);
-        $user_password = trim($_POST['password']);
+        $user_password = ($_POST['password']);
 
         if (!empty($user_username) && !empty($user_password)) {
             // Look up the username and password in the database
-            $query = "SELECT user_id, username FROM users WHERE username = :user_username AND password = SHA(:user_password)";
+            $query = "SELECT userID, username FROM users WHERE username = :user_username AND password = SHA(:user_password)";
             $stmt = $dbh->prepare($query);
             $stmt->execute(array(
                 'user_username' => $user_username,
