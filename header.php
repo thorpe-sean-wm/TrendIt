@@ -8,7 +8,7 @@ session_start();
             <a href="index.php"><button class="mButton">Profile</button></a>
             <a href="search.php"><button class="mButton">Search</button></a>
             <?php
-            if(isset($_SESSION['userID'])){
+            if(isset($_SESSION['user_id'])){
                 echo '<a href="logout.php"><button class="mButton">Log Out</button></a>';
             }
             else{
