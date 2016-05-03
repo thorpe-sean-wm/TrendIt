@@ -30,7 +30,9 @@ require_once "header.php";
                 </nav>
 
                 <section id="bio">
-                    <?php echo '$username';  ?>
+                    <?php
+                        echo $_SESSION['username'];
+                    ?>
 
                     <p>Blah bleh blah bleh blah.</p>
 

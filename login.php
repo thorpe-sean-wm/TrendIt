@@ -72,7 +72,7 @@ $page_title = 'Log In';
         echo '<h3>TrendIt - ' . $page_title . '</h3>';
 
         // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
-        if (empty($_SESSION['user_id'])) {
+        if (empty($_SESSION['user_ID'])) {
             echo '<p class="error">' . $error_msg . '</p>';
             ?>
 
