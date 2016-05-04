@@ -3,6 +3,21 @@
     width: 450px;
     font-size: 20px;
     padding: 4px 7px 4px 7px;
+    float: left;
+    margin-top: 4px;
+}
+#searchSubmit{
+    height: 50px;
+    width: 50px;
+    float: left;
+    background-color: #94CEBA;
+    border: 0;
+    border-radius: 5px;
+    -webkit-transition: background-color .35s ease-in-out, border-radius .4s ease-in-out;
+}
+#searchSubmit:hover{
+    background-color: #6bbda0;
+    border-radius: 25px;
 }
 .centerDiv{
 

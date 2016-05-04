@@ -1,24 +1,20 @@
-var contentDiv;
-
+var parentDiv;
 function start() {
-    contentDiv = document.getElementById("main");
     var targets = document.getElementsByClassName("centerDiv");
     var number = targets.length;
     var tracker = 0;
     for (targets[tracker]; tracker <= (number - 1) ; tracker++) {
-        centering(targets[tracker]);
+        parentDiv = targets[tracker].parentNode;
+        centering(targets[tracker], parentDiv);
     }
 }
-
-
-function centering(input) {
+function centering(input, parent) {
     var w = input.style.width;
     var wLength = w.length;
-    w = Number(w.substring(0 , (wLength - 2)));
-    var CW = contentDiv.style.width;
-    var CWLength = CW.length;
-    CW = Number(CW.substring(0, (CWLength - 2)));
-    console.log(CW);
+    w = Number(w.substring(0, (wLength - 2)));
+    var PW = parent.style.width;
+    var PWLength = PW.length;
+    PW = Number(PW.substring(0, (PWLength - 2)));
+    input.style.marginLeft = (String((PW / 2) - (w / 2)) + "px");
 
-//    console.log(LMar);
 }
