@@ -69,10 +69,14 @@ a:hover {
 }
 
 .content{
-    margin: 0 auto;
-    width: 990px;
-    background-color: #f4f4f4;
-    min-height: 521px;
+    margin: 25px auto;
+    max-width: 500px;
+    min-height: 450px;
+    text-align: center;
+    background-color: rgba(238, 238, 238, 0.95);
+    padding-top: 10px;
+    border-radius: 10px;
+    border: 2px solid #c8c8c8;
 }
 
 .footerCont{
@@ -171,4 +175,21 @@ form {
     text-decoration:none;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+video#bgvid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(empty.png) no-repeat;
+    background-size: cover;
 }

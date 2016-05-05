@@ -51,9 +51,8 @@ if (!isset($_SESSION['userID'])) {
 $page_title = 'Log In';
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="login_style.css" />
@@ -67,9 +66,12 @@ $page_title = 'Log In';
     </div>
 </div>
 <div class="container">
+    <video autoplay loop muted poster="empty.png" id="bgvid">
+        <source src="kiwi1.mp4" type="video/mp4">
+    </video>
     <div class="content">
         <?php
-        echo '<h3>TrendIt - ' . $page_title . '</h3>';
+        echo '<h2>TrendIt - ' . $page_title . '</h2>';
 
         // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
         if (empty($_SESSION['user_ID'])) {
