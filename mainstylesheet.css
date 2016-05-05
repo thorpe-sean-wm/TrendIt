@@ -112,3 +112,28 @@ a:hover {
     color: #4F3A3c;
     border: #3d2c2d 2px solid;
 }
+
+.boxed {
+    padding: 0px 150px 200px 150px;
+    text-align: center;
+    background-color: #e6e7e7;
+    position: absolute;
+    right: 400px;
+    top: 300px
+
+
+}
+
+.friend {
+    padding: 10px 4px 190px 3px;
+    text-align: left;
+    background-color: rgba(148, 206, 186, 0.51);
+    position: absolute;
+
+}
+
+.title {
+    top: -60px;
+    left: 190px;
+    position: relative;
+}
