@@ -49,7 +49,7 @@ $page_title = 'Sign Up';
                 ));
                 $result= $stmt->fetchAll();
 
-                if (count($result) == 0 && count($result1) == 0) {
+                if (count($result) == 0) {
                     // The username is unique, so insert the data into the database
                     $query = "INSERT INTO users (username, password, email, joinDate) VALUES (:username, SHA(:password1), :email, NOW())";
                     $stmt = $dbh->prepare($query);

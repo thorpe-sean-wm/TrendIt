@@ -112,3 +112,16 @@ a:hover {
     color: #4F3A3c;
     border: #3d2c2d 2px solid;
 }
+#trending {
+    position:relative;
+    top: 10px;
+    left: 10px;
+    width: 300px;
+    height: 500px;
+    border-right: 2px solid;
+    border-color: black;
+    border-radius: 10px;
+}
+#recentPosts {
+    background-color: red;
+}
