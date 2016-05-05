@@ -15,9 +15,7 @@ require_once "header.php";
 ?>
 <div class="container">
     <div class="content">
-        <video width="1270" height="720" controls>
-            <source src="loginpagevideo.mp4" type="video/mp4">
-        </video>
+
     </div>
 </div>
 <?php
