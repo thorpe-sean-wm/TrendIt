@@ -66,8 +66,8 @@ $page_title = 'Log In';
     </div>
 </div>
 <div class="container">
-    <video autoplay loop poster="empty.png" id="bgvid">
-        <source src="loginpagevideo.mp4" type="video/mp4">
+    <video autoplay loop muted poster="empty.png" id="bgvid">
+        <source src="kiwi1.mp4" type="video/mp4">
     </video>
     <div class="content">
         <?php
