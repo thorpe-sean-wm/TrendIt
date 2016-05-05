@@ -114,13 +114,13 @@ a:hover {
 }
 
 .boxed {
+    border-radius: 25px;
     padding: 0px 150px 200px 150px;
     text-align: center;
     background-color: #e6e7e7;
     position: absolute;
     right: 400px;
-    top: 300px
-
+    top: 300px;
 
 }
 
@@ -136,4 +136,10 @@ a:hover {
     top: -60px;
     left: 190px;
     position: relative;
+}
+
+.gear {
+    top: 290px;
+    right: 400px;
+    position: absolute;
 }

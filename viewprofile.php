@@ -31,12 +31,17 @@ require_once "header.php";
 
         <h1 class="title">(NAME)</h1>
 
+
+
                 <div class="boxed" align="center">
 
                     <p>(BIO) Blah bleh blah bleh blah.</p>
 
                     <p>Woof Woof bark bark wruff wruff.</p>
                 </div>
+
+
+        <a href="editprofile.php" class="gear"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-gear-128.png" height="25" width="25"></a>
 
         <div class="action" align="center">
             <p>Most recent actions:</p>
