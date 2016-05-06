@@ -19,8 +19,32 @@ require_once "header.php";
         </div>
         <div id="recentPosts">
             <div>
-                <p class="contentText"><strong>Recent Posts</strong></p>
                 <?php
+                $i = 0;
+                // Connect to the database
+                $dbh = new PDO('mysql:host=localhost;dbname=trenditdb', 'root', 'root');
+                // Retrieve the score data from MySQL
+                $query = "SELECT * FROM posts ORDER BY id ASC";
+
+                $stmt = $dbh->prepare($query);
+                $stmt->execute();
+                $results = $stmt->fetchall();
+
+
+                // Loop through the array of score data, formatting it as HTML
+                echo '<table style="width: 100%;">';
+
+                $i = 0;
+                foreach($results as $row) {
+                    if ($i == 0) {
+                        echo '<tr><td colspan="2" class="contentText"><strong>Recent Posts</strong></td></tr>';
+                    }
+                    // Display the score data
+                    echo '<tr><td class="subinfo">';
+                    echo '<strong>Post</strong><br /> ' . $row['post'] . '<br /></td>';
+                    $i++;
+                }
+                echo '</table>';
                 ?>
             </div>
         </div>
