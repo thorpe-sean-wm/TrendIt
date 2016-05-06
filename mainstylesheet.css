@@ -143,3 +143,8 @@ a:hover {
     right: 400px;
     position: absolute;
 }
+
+.form {
+    left: 200px;
+    position: absolute;
+}

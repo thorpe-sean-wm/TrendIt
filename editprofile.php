@@ -16,9 +16,9 @@ require_once "header.php";
 <div class="container">
     <div class="content">
 
-
+    <div class="form">
         <h1>Edit Your User Profile</h1>
-        <P><B>Please edit your user information below:</B></P>
+        <P><B>Please edit any of your user information below:</B></P>
 
         <form method="POST" action="index.htm">
 
@@ -37,9 +37,12 @@ require_once "header.php";
                 <input type="password" size="20" id="password2" name="password2" placeholder="Confirm Password" class="formInput" /><br />
 
 
-            <P><input type="submit" name="submitbtn" value="Update">
+
+            <P><input type="submit" name="submitbtn" value="Update" class="mButton">
+
 
         </form>
+        </div>
     </div>
 </div>
 
