@@ -14,12 +14,14 @@ require_once "header.php";
     <div class="content">
         <div id="trending">
             <div>
-                <p><strong>Trending</strong></p>
+                <p class="contentText"><strong>Trending</strong></p>
             </div>
         </div>
         <div id="recentPosts">
             <div>
-                <p><strong>Recent Posts</strong></p>
+                <p class="contentText"><strong>Recent Posts</strong></p>
+                <?php
+                ?>
             </div>
         </div>
     </div>

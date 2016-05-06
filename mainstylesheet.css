@@ -121,7 +121,20 @@ a:hover {
     border-right: 2px solid;
     border-color: black;
     border-radius: 10px;
+    float: left;
 }
 #recentPosts {
-    background-color: red;
+    position:relative;
+    top: 10px;
+    left: 10px;
+    width: 300px;
+    height: 500px;
+    float: left;
+    margin-left: 11px;
+}
+.contentText {
+    color: #4F3A3c;
+    font-size: 150%;
+    margin: 0;
+    padding: 0;
 }
