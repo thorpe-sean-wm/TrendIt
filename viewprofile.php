@@ -16,34 +16,25 @@ require_once "header.php";
 ?>
 <div class="container">
     <div class="content">
-                <div id="userphoto"><img src="images/avatar.png" alt="default avatar" width="173" ></div>
+        <div id="profileLeftBar">
+            <div id="userphoto" align="center"><img src="images/avatar.png" alt="default avatar" width="173" ></div>
+            <div class="friend" align="left">
+                <p>Friends list:</p>
+                <ul id="friendslist" class="clearfix" style="list-style-type: none">
+                    <li><a href="#"><img src="images/avatar.png" width="22" height="22"> Username</a></li>
+                    <li><a href="#"><img src="images/avatar.png" width="22" height="22"> SomeGuy123</a></li>
+                    <li><a href="#"><img src="images/avatar.png" width="22" height="22"> PurpleGiraffe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="userBio">
+            <h1 id="viewprofileTitle"><?php echo $_SESSION['username']; ?></h1>
 
 
-        <div class="friend" align="left">
-            <p>Friends list:</p>
-
-            <ul id="friendslist" class="clearfix">
-                <li><a href="#"><img src="images/avatar.png" width="22" height="22"> Username</a></li>
-                <li><a href="#"><img src="images/avatar.png" width="22" height="22"> SomeGuy123</a></li>
-                <li><a href="#"><img src="images/avatar.png" width="22" height="22"> PurpleGiraffe</a></li>
-            </ul>
+            <a href="editprofile.php" class="gear"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-gear-128.png" height="25" width="25"></a>
         </div>
 
-        <h1 class="title">(NAME)</h1>
-
-
-
-                <div class="boxed" align="center">
-
-                    <p>(BIO) Blah bleh blah bleh blah.</p>
-
-                    <p>Woof Woof bark bark wruff wruff.</p>
-                </div>
-
-
-        <a href="editprofile.php" class="gear"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-gear-128.png" height="25" width="25"></a>
-
-        <div class="action" align="center">
+        <div align="center">
             <p>Most recent actions:</p>
 
                     <p class="activity">@10:15PM - Submitted a news article</p>
