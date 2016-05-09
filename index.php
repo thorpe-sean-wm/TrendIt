@@ -19,6 +19,18 @@ require_once "header.php";
         </div>
         <div id="recentPosts">
             <div>
+                <p class="contentText"><strong>Recent</strong></p>
+                <div class="post">
+                    <div class="postUser">
+                        <p>Placeholder:</p>
+                    </div>
+                    <div class="postContent">
+                        <p>Placeholder</p>
+                    </div>
+                    <div class="postUtil">
+                        <p><button>Favorite</button> 0 <button>Like</button> 0 <button>Comment</button>0</p>
+                    </div>
+                </div>
                 <?php
                 $i = 0;
                 // Connect to the database
