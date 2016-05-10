@@ -11,6 +11,8 @@ p, h1, h2, h3, h4, h5, h6, a{
 
 p{
     font-size: 14px;
+    padding: 0;
+    margin: 0;
 }
 
 a {
@@ -81,6 +83,46 @@ a:hover {
     max-width: 1080px;
     padding: 0 10px;
 }
+.post{
+    position: relative;
+    width: 575px;
+    height: 175px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px #7d7d7d solid;
+    cursor: default;
+}
+.postContent{
+    height: 110px;
+    text-align: center;
+}
+.postUtil{
+    height: 64px;
+    border-top: 1px #f7f7f7 solid;
+    background-color: #94CEBA;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    text-align: right;
+}
+.postUser{
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    margin: 0;
+}
+.postUser p{
+    font-size: 14px;
+    text-decoration: solid;
+    color: #94CEBA;
+}
+.postContent p{
+    padding-top: 40px;
+    font-size: 16px;
+}
+.postUtil p{
+    padding-top: 8px;
+    padding-right: 10px;
+}
 /*ID CSS */
 #logo{
     position: absolute;
@@ -111,4 +153,61 @@ a:hover {
     background-color: #94CEBA;
     color: #4F3A3c;
     border: #3d2c2d 2px solid;
+}
+#trending {
+    width: 30%;
+    min-height: 500px;
+    border-right: 2px solid;
+    border-color: black;
+    border-radius: 10px;
+    float: left;
+}
+#recentPosts {
+    width: 68%;
+    float: left;
+    margin-left: 11px;
+}
+
+
+
+.contentText {
+    color: #4F3A3c;
+    font-size: 150%;
+    margin: 0;
+    padding: 0;
+}
+
+.boxed {
+    border-radius: 25px;
+    text-align: center;
+    background-color: #e6e7e7;
+    position: relative;
+    left: 10px;
+    top: 300px;
+}
+
+.friend {
+    padding: 10px 4px 190px 3px;
+    text-align: left;
+    background-color: rgba(148, 206, 186, 0.51);*/
+
+}
+
+.title {
+    top: -60px;
+    left: 190px;
+    position: relative;
+}
+
+.form {
+    left: 200px;
+    position: absolute;
+}
+#userBio{
+    float: left;
+    width: 80%;
+}
+#profileLeftBar {
+    width: 20%;
+    float: left;
 }
