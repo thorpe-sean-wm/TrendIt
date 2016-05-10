@@ -179,20 +179,17 @@ a:hover {
 
 .boxed {
     border-radius: 25px;
-    padding: 0px 150px 200px 150px;
     text-align: center;
     background-color: #e6e7e7;
-    position: absolute;
-    right: 400px;
+    position: relative;
+    left: 10px;
     top: 300px;
-
 }
 
 .friend {
     padding: 10px 4px 190px 3px;
     text-align: left;
-    background-color: rgba(148, 206, 186, 0.51);
-    position: absolute;
+    background-color: rgba(148, 206, 186, 0.51);*/
 
 }
 
@@ -202,13 +199,15 @@ a:hover {
     position: relative;
 }
 
-.gear {
-    top: 290px;
-    right: 400px;
-    position: absolute;
-}
-
 .form {
     left: 200px;
     position: absolute;
+}
+#userBio{
+    float: left;
+    width: 80%;
+}
+#profileLeftBar {
+    width: 20%;
+    float: left;
 }
