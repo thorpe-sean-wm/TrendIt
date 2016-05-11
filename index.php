@@ -65,5 +65,7 @@ require_once "header.php";
 <?php
 require_once "footer.php";
 ?>
+
+<a href="welcomeIndex.php">Hello</a>
 </body>
 </html>
