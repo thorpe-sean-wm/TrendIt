@@ -34,19 +34,47 @@ require_once "header.php";
             <a href="editprofile.php" class="gear"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-gear-128.png" height="25" width="25"></a>
         </div>
 
-        <div align="center">
-            <p>Most recent actions:</p>
+        <div class="feed">
+            <?php
+            $i = 0;
+            // Connect to the database
+            $dbh = new PDO('mysql:host=127.0.0.1;dbname=trenditdb', 'root', 'root');
+            // Retrieve the score data from MySQL
+            $query = "SELECT * FROM posts ORDER BY postTime ASC";
 
-                    <p class="activity">@10:15PM - Submitted a news article</p>
+            $stmt = $dbh->prepare($query);
+            $stmt->execute();
+            $results = $stmt->fetchAll();
 
-                    <p class="activity">@9:50PM - Submitted a news article</p>
+            foreach($results as $posts){
 
-                    <p class="activity">@8:15PM - Posted a comment</p>
+                $query = "SELECT * FROM users WHERE userID = :userid";
 
-                    <p class="activity">@4:30PM - Added <strong>someusername</strong> as a friend</p>
+                $stmt = $dbh->prepare($query);
+                $stmt->execute(array(
+                        'userid' => $posts['userID']
+                    )
+                );
+                $userinfo = $stmt->fetch();
 
-                    <p class="activity">@12:30PM - Submitted a news article</p>
-                </div>
+                echo '<div class="post">';
+                echo '<div class="postUser">';
+                echo '<p>' . $userinfo['username'] . ':</p>';
+                echo '</div>';
+                echo '<div class="postContent">';
+                echo '<p>' . $posts['post'] . '</p>';
+                echo '</div>';
+                echo '<div class="postUtil">';
+                echo '<p><button>Favorite</button> 0 <button>Like</button> 0 <button>Comment</button>0</p>';
+                echo '</div>';
+                echo '</div>';
+
+            }
+
+            ?>
+
+        </div>
+        <div style="clear: both"></div>
 
 
         <script type="text/javascript">
