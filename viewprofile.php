@@ -16,19 +16,50 @@ require_once "header.php";
 ?>
 <div class="container">
     <div class="content">
+        <?php
+        $dbh = new PDO('mysql:host=127.0.0.1;dbname=trenditdb', 'root', 'root');
+
+        $userQuery = "SELECT * FROM users WHERE userID = '" . $_GET['user'] . "'";
+
+        $ustmt = $dbh->prepare($userQuery);
+        $ustmt->execute();
+        $pageInfo = $ustmt->fetch();
+
+        ?>
         <div id="profileLeftBar">
             <div id="userphoto" align="center"><img src="images/avatar.png" alt="default avatar" width="173" ></div>
             <div class="friend" align="left">
                 <p>Friends list:</p>
-                <ul id="friendslist" class="clearfix" style="list-style-type: none">
-                    <li><a href="#"><img src="images/avatar.png" width="22" height="22"> Username</a></li>
-                    <li><a href="#"><img src="images/avatar.png" width="22" height="22"> SomeGuy123</a></li>
-                    <li><a href="#"><img src="images/avatar.png" width="22" height="22"> PurpleGiraffe</a></li>
-                </ul>
+                <?php
+                // Retrieve the score data from MySQL
+                $query = "SELECT * FROM followers WHERE userID = '" . $pageInfo['userID'] . "'";
+
+                $stmt = $dbh->prepare($query);
+                $stmt->execute();
+                $results = $stmt->fetchAll();
+
+                echo '<ul id="friendslist" class="clearfix" style="list-style-type: none">';
+
+                foreach($results as $following){
+
+                    $query = "SELECT * FROM users WHERE userID = :userid";
+
+                    $stmt = $dbh->prepare($query);
+                    $stmt->execute(array(
+                            'userid' => $following['followingID']
+                        )
+                    );
+                    $userinfo = $stmt->fetch();
+
+                    echo '<li><a href="?user=' . $userinfo['userID'] . '"><img src="images/avatar.png" width="22" height="22">'. $userinfo['username'] .'</a></li>';
+                }
+
+                echo '</ul>';
+                ?>
             </div>
         </div>
         <div id="userBio">
-            <h1 id="viewprofileTitle"><?php echo $_SESSION['username']; ?></h1>
+            <h1 id="viewprofileTitle"><?php echo $pageInfo['username']; ?></h1>
 
 
             <a href="editprofile.php" class="gear"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-gear-128.png" height="25" width="25"></a>
