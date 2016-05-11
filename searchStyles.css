@@ -3,6 +3,23 @@
     width: 450px;
     font-size: 20px;
     padding: 4px 7px 4px 7px;
+    float: left;
+    margin-top: 4px;
+}
+#searchSubmit{
+    height: 50px;
+    width: 50px;
+    float: left;
+    background-color: #94CEBA;
+    border: 0;
+    border-radius: 25px;
+    -webkit-transform-origin: 50% 50%;
+    /*-webkit-animation: searching 2s linear infinite;*/
+    -webkit-transition: -webkit-animation linear;
+}
+
+#searchSubmit:hover{
+    -webkit-animation: searching 3s linear infinite;
 }
 .centerDiv{
 
@@ -14,5 +31,12 @@
     height: 14px;
     width: 14px;
     background-color: #6bbda0;
+    margin-left: 0;
 }
-
+@-webkit-keyframes searching {
+    0% {background-color: #6bbda0; transform: rotate(0deg) scale(1, 1)}
+    10% {background-color: #7ad1b3; transform: rotate(0deg) scale(0.99, 0.99)}
+    40% {background-color: #71e156; transform: rotate(0deg) scale(0.96, 0.96);}
+    90% {background-color: #71e156; transform: rotate(0deg) scale(0.91, 0.91)}
+    100% {background-color: #6bbda0; transform: rotate(0deg) scale(1, 1)}
+}
