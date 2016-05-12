@@ -20,43 +20,42 @@ require_once "header.php";
         <div id="recentPosts">
             <div>
                 <p class="contentText"><strong>Recent</strong></p>
-                <div class="post">
-                    <div class="postUser">
-                        <p>Placeholder:</p>
-                    </div>
-                    <div class="postContent">
-                        <p>Placeholder</p>
-                    </div>
-                    <div class="postUtil">
-                        <p><button>Favorite</button> 0 <button>Like</button> 0 <button>Comment</button>0</p>
-                    </div>
-                </div>
                 <?php
                 $i = 0;
                 // Connect to the database
-                $dbh = new PDO('mysql:host=localhost;dbname=trenditdb', 'root', 'root');
+                $dbh = new PDO('mysql:host=127.0.0.1;dbname=trenditdb', 'root', 'root');
                 // Retrieve the score data from MySQL
-                $query = "SELECT * FROM posts ORDER BY id ASC";
+                $query = "SELECT * FROM posts ORDER BY postTime ASC";
 
                 $stmt = $dbh->prepare($query);
                 $stmt->execute();
-                $results = $stmt->fetchall();
+                $results = $stmt->fetchAll();
 
+                foreach($results as $posts){
 
-                // Loop through the array of score data, formatting it as HTML
-                echo '<table style="width: 100%;">';
+                    $query = "SELECT * FROM users WHERE userID = :userid";
 
-                $i = 0;
-                foreach($results as $row) {
-                    if ($i == 0) {
-                        echo '<tr><td colspan="2" class="contentText"><strong>Recent Posts</strong></td></tr>';
-                    }
-                    // Display the score data
-                    echo '<tr><td class="subinfo">';
-                    echo '<strong>Post</strong><br /> ' . $row['post'] . '<br /></td>';
-                    $i++;
+                    $stmt = $dbh->prepare($query);
+                    $stmt->execute(array(
+                            'userid' => $posts['userID']
+                        )
+                    );
+                    $userinfo = $stmt->fetch();
+
+                    echo '<div class="post">';
+                    echo '<div class="postUser">';
+                    echo '<p>' . $userinfo['username'] . ':</p>';
+                    echo '</div>';
+                    echo '<div class="postContent">';
+                    echo '<p>' . $posts['post'] . '</p>';
+                    echo '</div>';
+                    echo '<div class="postUtil">';
+                    echo '<p><button>Favorite</button> 0 <button>Like</button> 0 <button>Comment</button>0</p>';
+                    echo '</div>';
+                    echo '</div>';
+
                 }
-                echo '</table>';
+
                 ?>
             </div>
         </div>
@@ -65,5 +64,7 @@ require_once "header.php";
 <?php
 require_once "footer.php";
 ?>
+
+<a href="welcomeIndex.php">Hello</a>
 </body>
 </html>
