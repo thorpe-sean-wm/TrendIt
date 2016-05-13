@@ -17,9 +17,9 @@ require_once "header.php";
 <div class="container">
     <div class="content">
         <div id="profileLeftBar">
-            <div id="userphoto" align="center"><img src="images/avatar.png" alt="default avatar" width="173" ></div>
+            <div id="userphoto" align="center"><img src="<?php if(!empty($_SESSION['profilePicture'])){echo 'profileImages/' . $_SESSION['profilePicture'];}else{echo 'images/avatar.png';} ?>" alt="default avatar" width="173" id="profilePhoto"></div>
             <div class="friend" align="left">
-                <p>Friends list:</p>
+                <p style="margin-top: 183px;">Friends list:</p>
                 <ul id="friendslist" class="clearfix" style="list-style-type: none">
                     <li><a href="#"><img src="images/avatar.png" width="22" height="22"> Username</a></li>
                     <li><a href="#"><img src="images/avatar.png" width="22" height="22"> SomeGuy123</a></li>

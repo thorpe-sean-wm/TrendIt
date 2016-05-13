@@ -40,3 +40,22 @@
     90% {background-color: #71e156; transform: rotate(0deg) scale(0.91, 0.91)}
     100% {background-color: #6bbda0; transform: rotate(0deg) scale(1, 1)}
 }
+.searchResult{
+
+}
+.searchResultData{
+
+}
+.searchResultPicture{
+
+}
+.searchResultBarrier{
+    height: 40px;
+    width: 3px;
+    background-color: #71e156;
+}
+.searchResultImg{
+    width: 40px;
+    height: 40px;
+    /*border-bottom-right-radius: 23px;*/
+}

@@ -18,7 +18,7 @@ if (!isset($_SESSION['userID'])) {
 
         if (!empty($user_username) && !empty($user_password)) {
             // Look up the username and password in the database
-            $query = "SELECT userID, username FROM users WHERE username = :user_username AND password = SHA(:user_password)";
+            $query = "SELECT userID, username, profilePicture FROM users WHERE username = :user_username AND password = SHA(:user_password)";
             $stmt = $dbh->prepare($query);
             $stmt->execute(array(
                 'user_username' => $user_username,
@@ -30,6 +30,7 @@ if (!isset($_SESSION['userID'])) {
                 $row = $data[0];
                 $_SESSION['userID'] = $row['userID'];
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['profilePicture'] = $row['profilePicture'];
                 setcookie('userID', $row['userID'], time() + (60 * 60 * 24 * 30));
                 setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));
                 $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/index.php';

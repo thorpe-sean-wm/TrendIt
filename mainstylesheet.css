@@ -218,3 +218,10 @@ a:hover {
     width: 20%;
     float: left;
 }
+#profilePhoto{
+    float: left;
+    border-bottom-right-radius: 100px;
+    border-top: groove #71e156 4px;
+    border-left: groove #71e156 4px;
+    box-shadow: 10px 5px 5px #7d978c ;
+}
