@@ -10,6 +10,12 @@ if (isset($_POST['delete'])){
     $result = $stmt->execute(array(
         'postID' => $_POST['postID'],
     ));
+    
+    $query = "DELETE FROM likes WHERE postID = :postID LIMIT 1";
+    $stmt = $dbh->prepare($query);
+    $result = $stmt->execute(array(
+        'postID' => $_POST['postID'],
+    ));
     if($result){
         $successMSG = '<p>You have deleted the post.</p>';
         $location = 'Location: viewprofile.php?user=' . $_SESSION['userID'];
