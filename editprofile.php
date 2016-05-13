@@ -20,7 +20,7 @@ require_once "header.php";
         <h1>Edit Your User Profile</h1>
         <P><B>Please edit any of your user information below:</B></P>
 
-        <form method="POST" action="index.htm">
+        <form method="POST" action="<?php ?>">
 
             <H4>User Name:</H4>
             <p><input type="text" size="20" name="profile_user_name" placeholder="User Name"</p>

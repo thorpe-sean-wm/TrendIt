@@ -95,6 +95,7 @@ require_once "header.php";
 
             foreach($results as $posts){
 
+                //Grabbing Post information
                 $query = "SELECT * FROM users WHERE userID = :userid";
 
                 $stmt = $dbh->prepare($query);
@@ -104,19 +105,47 @@ require_once "header.php";
                 );
                 $userinfo = $stmt->fetch();
 
+                //Like Amounting
+                $query = "SELECT * FROM likes WHERE postID = :postID";
+
+                $stmt = $dbh->prepare($query);
+                $stmt->execute(array(
+                        'postID' => $posts['postID']
+                    )
+                );
+                $likeAmount = $stmt->fetchAll();
+
+                //Like Check
+                $query = "SELECT userID FROM likes WHERE postID = :postID AND userID = :userID";
+
+                $stmt = $dbh->prepare($query);
+                $stmt->execute(array(
+                        'postID' => $posts['postID'],
+                        'userID' => $_SESSION['userID']
+                    )
+                );
+                $likeCheck = $stmt->fetch();
+
                 echo '<div class="post">';
                 echo '<div class="postUser">';
-                echo '<p>' . $userinfo['username'] . ':</p>';
+                echo '<p><a class="postLink" href="viewprofile.php?user= ' . $userinfo['userID'] . '"><img style="vertical-align:middle" src="images/avatar.png" width="22" height="22">&nbsp;' . $userinfo['username'] . ':</a></p>';
                 echo '</div>';
                 echo '<div class="postContent">';
                 echo '<p>' . $posts['post'] . '</p>';
                 echo '</div>';
                 echo '<div class="postUtil">';
-                echo '<p>';
+                echo '<form action="postutility.php" method="post"><input type="hidden" name="postID" value="' . $posts['postID'] .'">';
                 if($userinfo['userID'] == $_SESSION['userID']){
-                    echo '<form action="deletepost.php" method="post"><input type="hidden" name="postID" value="' . $posts['postID'] .'"><button type="submit" name="submit">Delete Post</button></form>';
+                    echo '<button type="submit" name="delete" value="1">Delete Post</button>';
                 }
-                echo '<button>Favorite</button> 0 <button>Like</button> 0 <button>Comment</button>0</p>';
+                if($likeCheck['userID'] == $_SESSION['userID']){
+                    echo '<button type="submit" name="unlike" value="1">Unlike</button> ' . count($likeAmount);
+                }
+                else{
+                    echo '<button type="submit" name="like" value="1">Like</button> ' . count($likeAmount);
+                }
+//                echo '<button>Comments</button>0</p>';
+                echo '</form>';
                 echo '</div>';
                 echo '</div>';
 

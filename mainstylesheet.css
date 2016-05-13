@@ -32,6 +32,21 @@ a:hover {
     text-decoration: none;
     color: #999;
 }
+.postLink{
+    text-decoration: none;
+    color: #94CEBA;
+    transition: color .25s ease-in-out;
+    -moz-transition: color .25s ease-in-out;
+    -webkit-transition: color .25s ease-in-out;
+}
+
+.postLink:hover{
+    text-decoration: none;
+    color: #5d8274;
+    transition: color .25s ease-in-out;
+    -moz-transition: color .25s ease-in-out;
+    -webkit-transition: color .25s ease-in-out;
+}
 
 /*Class CSS */
 .headerCont{
