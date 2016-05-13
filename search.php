@@ -160,9 +160,8 @@ require_once "header.php";
                             if (!empty($row[0])) {echo '<p style="font-size: 120%"><b>' . $row[0] . '</b></p>';}
                             echo '</td>';
                             echo '<td><div class="searchResultBarrier"></div></td>';
-
-
                             if (!empty($row[3])) {echo '<td class=searchResultData><p style="font-style: italic; font-family: -webkit-body; width: 400px; margin-left: 10px; margin-right: 10px; height: 40px;">' . $row[3] .'</p></td>';}
+                            echo '<td><div class="searchResultBarrier"></div></td>';
                             echo '<td>';
                             // echoing the search result(s) first and last name
                             if (!empty($row[1])) {echo '<p>First Name: <b>' . $row[1] . '</b></p>';}
