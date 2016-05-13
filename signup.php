@@ -50,7 +50,7 @@ $page_title = 'Sign Up';
                     'username' => $username,
                     'email' => $email
                 ));
-                $result= $stmt->fetchAll();
+                $result = $stmt->fetchAll();
 
                 if (count($result) == 0) {
                     // The username is unique, so insert the data into the database

@@ -20,43 +20,7 @@ require_once "header.php";
         <div id="recentPosts">
             <div>
                 <p class="contentText"><strong>Recent</strong></p>
-                <?php
-                $i = 0;
-                // Connect to the database
-                $dbh = new PDO('mysql:host=127.0.0.1;dbname=trenditdb', 'root', 'root');
-                // Retrieve the score data from MySQL
-                $query = "SELECT * FROM posts ORDER BY postTime ASC";
 
-                $stmt = $dbh->prepare($query);
-                $stmt->execute();
-                $results = $stmt->fetchAll();
-
-                foreach($results as $posts){
-
-                    $query = "SELECT * FROM users WHERE userID = :userid";
-
-                    $stmt = $dbh->prepare($query);
-                    $stmt->execute(array(
-                            'userid' => $posts['userID']
-                        )
-                    );
-                    $userinfo = $stmt->fetch();
-
-                    echo '<div class="post">';
-                    echo '<div class="postUser">';
-                    echo '<p>' . $userinfo['username'] . ':</p>';
-                    echo '</div>';
-                    echo '<div class="postContent">';
-                    echo '<p>' . $posts['post'] . '</p>';
-                    echo '</div>';
-                    echo '<div class="postUtil">';
-                    echo '<p><button>Favorite</button> 0 <button>Like</button> 0 <button>Comment</button>0</p>';
-                    echo '</div>';
-                    echo '</div>';
-
-                }
-
-                ?>
             </div>
         </div>
     </div>
