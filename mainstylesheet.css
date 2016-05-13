@@ -173,8 +173,39 @@ a:hover {
     float: left;
     margin-left: 11px;
 }
-
-
+#postCreate{
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #7ad1b3;
+}
+#postCreate p{
+    position: fixed;
+    font-size: 40px;
+    color: #ffffff;
+    text-align: center;
+}
+#postBox{
+    padding: 1em;
+    background-color: #7ad1b3;
+    height: 12em;
+    width: 24em;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border: solid #000 0.1em;
+    box-shadow: 0 0 25px #888888;
+    display: none;
+}
+#post{
+    position: relative;
+}
 
 .contentText {
     color: #4F3A3c;
