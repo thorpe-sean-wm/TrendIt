@@ -40,7 +40,6 @@ require_once "header.php";
         <div id="searchResults">
             <?php
             if (isset($_GET['submit']) && !($_GET['searchBar'] == '')) {
-//                if (!empty($_GET['searchBar']) && !($_GET['searchBar'] == '')) {
                 if ((!isset($_GET['userNameSearch'])) && (!isset($_GET['firstNameSearch'])) && (!isset($_GET['lastNameSearch']))) {
                     echo '<p class=error>Please check at least one search category.</p>';
                 }
@@ -63,7 +62,7 @@ require_once "header.php";
                     if ($optUserName == 1) {
                         if ($optFirstName == 1) {
                             if ($optLastName == 1) {
-                                $query = "SELECT username, firstname, lastname FROM users WHERE username = :searchInput OR firstName = :firstInput OR lastName = :lastInput OR username LIKE :searchInput2 OR firstName LIKE :firstInput2 OR lastName LIKE :lastInput2";
+                                $query = "SELECT username, firstname, lastname, status, profilePicture, userID FROM users WHERE username = :searchInput OR firstName = :firstInput OR lastName = :lastInput OR username LIKE :searchInput2 OR firstName LIKE :firstInput2 OR lastName LIKE :lastInput2";
                                 $stmt = $dbh->prepare($query);
                                 $stmt->execute(array(
                                     'searchInput' => $searchInput,
@@ -75,7 +74,7 @@ require_once "header.php";
                                 ));
                             }
                             else{
-                                $query = "SELECT username, firstname, lastname FROM users WHERE username = :searchInput OR firstName = :firstInput OR username LIKE :searchInput2 OR firstName LIKE :firstInput2";
+                                $query = "SELECT username, firstname, lastname, status, profilePicture, userID FROM users WHERE username = :searchInput OR firstName = :firstInput OR username LIKE :searchInput2 OR firstName LIKE :firstInput2";
                                 $stmt = $dbh->prepare($query);
                                 $stmt->execute(array(
                                     'searchInput' => $searchInput,
@@ -87,7 +86,7 @@ require_once "header.php";
                         }
                         else{
                             if ($optLastName == 1) {
-                                $query = "SELECT username, firstname, lastname FROM users WHERE username = :searchInput OR lastName = :lastInput OR username LIKE :searchInput2 OR lastName LIKE :lastInput2";
+                                $query = "SELECT username, firstname, lastname, status, profilePicture, userID FROM users WHERE username = :searchInput OR lastName = :lastInput OR username LIKE :searchInput2 OR lastName LIKE :lastInput2";
                                 $stmt = $dbh->prepare($query);
                                 $stmt->execute(array(
                                     'searchInput' => $searchInput,
@@ -97,7 +96,7 @@ require_once "header.php";
                                 ));
                             }
                             else{
-                                $query = "SELECT username, firstname, lastname FROM users WHERE username = :searchInput OR username LIKE :searchInput2";
+                                $query = "SELECT username, firstname, lastname, status, profilePicture, userID FROM users WHERE username = :searchInput OR username LIKE :searchInput2";
                                 $stmt = $dbh->prepare($query);
                                 $stmt->execute(array(
                                     'searchInput' => $searchInput,
@@ -109,7 +108,7 @@ require_once "header.php";
                     else {
                         if ($optFirstName == 1) {
                             if ($optLastName == 1) {
-                                $query = "SELECT username, firstname, lastname FROM users WHERE firstName = :firstInput OR lastName = :lastInput OR firstName LIKE :firstInput2 OR lastName LIKE :lastInput2";
+                                $query = "SELECT username, firstname, lastname, status, profilePicture, userID FROM users WHERE firstName = :firstInput OR lastName = :lastInput OR firstName LIKE :firstInput2 OR lastName LIKE :lastInput2";
                                 $stmt = $dbh->prepare($query);
                                 $stmt->execute(array(
                                     'firstInput' => $searchInput,
@@ -119,7 +118,7 @@ require_once "header.php";
                                 ));
                             }
                             else{
-                                $query = "SELECT username, firstname, lastname FROM users WHERE firstName = :firstInput OR  firstName LIKE :firstInput2";
+                                $query = "SELECT username, firstname, lastname, status, profilePicture, userID FROM users WHERE firstName = :firstInput OR  firstName LIKE :firstInput2";
                                 $stmt = $dbh->prepare($query);
                                 $stmt->execute(array(
                                     'firstInput' => $searchInput,
@@ -129,7 +128,7 @@ require_once "header.php";
                         }
                         else{
                             if ($optLastName == 1) {
-                                $query = "SELECT username, firstname, lastname FROM users WHERE lastName = :lastInput OR lastName LIKE :lastInput2";
+                                $query = "SELECT username, firstname, lastname, status, profilePicture, userID FROM users WHERE lastName = :lastInput OR lastName LIKE :lastInput2";
                                 $stmt = $dbh->prepare($query);
                                 $stmt->execute(array(
                                     'lastInput' => $searchInput,
@@ -150,16 +149,25 @@ require_once "header.php";
             <table>
                 <?php
                         foreach ($results as $row) {
-                            echo '<tr>';
-                            if (!empty($row[0])) {
-                                echo '<td>' . 'Username: ' . $row[0] . '</td>';
+                            echo '<tr class="searchResult">';
+                            if (!empty($row[4])) {
+                                echo '<td class="searchResultPicture"><img src="profileImages/' . $row[4] . '" class="searchResultImg"></td>';
                             }
-                            if (!empty($row[1])) {
-                                echo '<td>' . 'First Name: ' . $row[1] . '</td>';
+                            else {
+                                echo '<td class="searchResultPicture"><img src="images/avatar.png" class="searchResultImg"></td>' ;
                             }
-                            if (!empty($row[2])) {
-                                echo '<td>' . 'Last Name: ' . $row[2] . '</td>';
-                            }
+                            echo '<td class="searchResultData">';
+                            if (!empty($row[0])) {echo '<p style="font-size: 120%"><b><a href="viewprofile.php?user=' . $row[5] . '">' . $row[0] . '</a></b></p>';}
+                            echo '</td>';
+                            echo '<td><div class="searchResultBarrier"></div></td>';
+                            if (!empty($row[3])) {echo '<td class=searchResultData><p style="font-style: italic; font-family: -webkit-body; width: 400px; margin-left: 10px; margin-right: 10px; height: 40px;">' . $row[3] .'</p></td>';}
+                            echo '<td><div class="searchResultBarrier"></div></td>';
+                            echo '<td>';
+                            // echoing the search result(s) first and last name
+                            if (!empty($row[1])) {echo '<p>First Name: <b>' . $row[1] . '</b></p>';}
+                            if (!empty($row[2])) {echo '<p>Last Name: <b>' . $row[2] . '</b></p>';}
+                            echo '</td>';
+                            // INSERT a link to their page / sen friend invite option here
                             echo '</tr>';
                         }
                     }
