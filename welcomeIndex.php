@@ -28,7 +28,7 @@
         <p>Your now favorite social media website</p>
         <ul class="actions">
 
-            <li><a href="index.php" class="button">#DatBoid</a></li>
+            <li><a href="index.php" class="button">#DatBoi</a></li>
 
         </ul>
         <div class="log">
