@@ -28,7 +28,14 @@ require_once "header.php";
 
         ?>
         <div id="profileLeftBar">
-            <div id="userphoto" align="center"><img src="images/avatar.png" alt="default avatar" width="173" ></div>
+            <div id="userphoto" align="center">
+                <img src="<?php if(isset($pageInfo['profilePicture'])){
+                    echo 'profileImages/' . $pageInfo['profilePicture'];
+                }
+                else {
+                    echo 'profileImages/default.png';
+                }
+                ?>" alt="Default Avatar" width="173" ></div>
             <div class="friend" align="left">
                 <h4>Friends list:</h4>
                 <?php
@@ -52,7 +59,14 @@ require_once "header.php";
                     );
                     $userinfo = $stmt->fetch();
 
-                    echo '<li><a href="?user=' . $userinfo['userID'] . '"><img src="images/avatar.png" width="22" height="22">&nbsp;'. $userinfo['username'] .'</a></li>';
+                    if(isset($userinfo['profilePicture'])){
+                        $picture = $userinfo['profilePicture'];
+                    }
+                    else {
+                        $picture =  'default.png';
+                    }
+
+                    echo '<li><a href="?user=' . $userinfo['userID'] . '"><img src="profileImages/' . $picture . '" width="22" height="22">&nbsp;'. $userinfo['username'] .'</a></li>';
                 }
 
                 echo '</ul>';
@@ -126,15 +140,22 @@ require_once "header.php";
                 );
                 $likeCheck = $stmt->fetch();
 
+
+                if(isset($userinfo['profilePicture'])){
+                    $picture = $userinfo['profilePicture'];
+                }
+                else {
+                    $picture =  'default.png';
+                }
                 echo '<div class="post">';
                 echo '<div class="postUser">';
-                echo '<p><a class="postLink" href="viewprofile.php?user= ' . $userinfo['userID'] . '"><img style="vertical-align:middle" src="images/avatar.png" width="22" height="22">&nbsp;' . $userinfo['username'] . ':</a></p>';
+                echo '<p><a class="postLink" href="viewprofile.php?user= ' . $userinfo['userID'] . '"><img style="vertical-align:middle" src="profileImages/' . $picture . '" width="22" height="22">&nbsp;' . $userinfo['username'] . ':</a></p>';
                 echo '</div>';
                 echo '<div class="postContent">';
                 echo '<p>' . $posts['post'] . '</p>';
                 echo '</div>';
                 echo '<div class="postUtil">';
-                echo '<form action="postutility.php" method="post"><input type="hidden" name="postID" value="' . $posts['postID'] .'">';
+                echo '<form action="postutility.php" method="post" class="postUtilities"><input type="hidden" name="postID" value="' . $posts['postID'] .'">';
                 if($userinfo['userID'] == $_SESSION['userID']){
                     echo '<button type="submit" name="delete" value="1">Delete Post</button>';
                 }

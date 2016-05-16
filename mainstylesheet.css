@@ -221,6 +221,10 @@ a:hover {
 #post{
     position: relative;
 }
+.postUtilities{
+    padding-top: 10px;
+    padding-right: 8px;
+}
 
 .contentText {
     color: #4F3A3c;
@@ -251,8 +255,18 @@ a:hover {
 }
 
 .form {
-    left: 200px;
-    position: absolute;
+    padding-left: 16px;
+    position: relative;
+}
+.editPicture{
+    padding-top: 16px;
+    padding-right: 65px;
+    float: right;
+    width: 150px;
+    height: 150px;
+}
+.currentPic{
+    border: 1px #000 solid;
 }
 
 #userBio{
