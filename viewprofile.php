@@ -28,7 +28,7 @@ require_once "header.php";
 
         ?>
         <div id="profileLeftBar">
-            <div id="userphoto" align="center"><img src="images/avatar.png" alt="default avatar" width="173" ></div>
+            <div id="userphoto" align="center"><img src="<?php if(!($pageInfo['profilePicture'] == null)){echo 'profileImages/'. $pageInfo['profilePicture'];}else{echo 'images/avatar.png';} ?>" alt="default avatar" style="width: 173px; height: 173px;" ></div>
             <div class="friend" align="left">
                 <h4>Friends list:</h4>
                 <?php
