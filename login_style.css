@@ -37,7 +37,7 @@ a:hover {
     width: 100%;
     margin: 0 auto;
     min-height: 80px;
-    background-color: #edffdb;
+    background-color: #283736;
     border-bottom: #d5dcda 2px solid;
 }
 
@@ -66,12 +66,17 @@ a:hover {
 .container{
     padding-top: 10px;
     padding-bottom: 10px;
+    background-image: url("http://49.media.tumblr.com/tumblr_lxnaiwzf0Q1r2wrwho10_r1_400.gif");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .content{
     margin: 25px auto;
     max-width: 500px;
-    min-height: 450px;
+    min-height: 550px;
     text-align: center;
     background-color: rgba(238, 238, 238, 0.95);
     padding-top: 10px;

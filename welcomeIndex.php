@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-n1.css">
 </noscript>
-</head>
+
 <body class="homepage">
 <div id="header-wrapper">
     <div id="header" class="container">
@@ -39,9 +39,8 @@
         </div>
     </section>
 
-
 </div>
-
+</body>
 
 </html>
 
