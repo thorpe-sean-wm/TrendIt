@@ -39,15 +39,16 @@ require_once "header.php";
             </div>
         <div id="searchResults">
             <?php
+            // Checking the search form to see if it's valid
             if (isset($_GET['submit']) && !($_GET['searchBar'] == '')) {
                 if ((!isset($_GET['userNameSearch'])) && (!isset($_GET['firstNameSearch'])) && (!isset($_GET['lastNameSearch']))) {
+                    // The search form is invalid, so tell the user to .
                     echo '<p class=error>Please check at least one search category.</p>';
                 }
                 // The search form is valid, we start the search and connect to the database
                 else {
                     // Connect to the database
                     $dbh = new PDO('mysql:host=localhost;dbname=trenditdb', 'root', 'root');
-
                     // Setting what the value is inside the search bar
                     $searchInput = $_GET['searchBar'];
                     // Set default search options (shouldn't ever be used if everything works as planned)
@@ -142,12 +143,14 @@ require_once "header.php";
                     }
                     $results = $stmt->fetchAll();
                     if (empty($results)) {
+                        // The search returned nothing from our database
                         echo '<p>Sorry, no results were found for that search.</p>';
                     }
                     else {
             ?>
             <table>
                 <?php
+                        // echoing the results out as our table
                         foreach ($results as $row) {
                             echo '<tr class="searchResult">';
                             if (!empty($row[4])) {
@@ -160,7 +163,7 @@ require_once "header.php";
                             if (!empty($row[0])) {echo '<p style="font-size: 120%"><b>' . $row[0] . '</b></p>';}
                             echo '</td>';
                             echo '<td><div class="searchResultBarrier"></div></td>';
-                            if (!empty($row[3])) {echo '<td class=searchResultData><p style="font-style: italic; font-family: -webkit-body; width: 400px; margin-left: 10px; margin-right: 10px; height: 40px;">' . $row[3] .'</p></td>';}
+                            if (!empty($row[3])) {echo '<td class=searchResultData><p style="font-style: italic; font-family: -webkit-body; width: 400px; margin-left: 10px; margin-right: 10px; height: 40px;">' . $row[3] .'</p></td>';}else{echo '<td class=searchResultData><p style="font-style: italic; font-family: -webkit-body; width: 400px; margin-left: 10px; margin-right: 10px; height: 40px;">';}
                             echo '<td><div class="searchResultBarrier"></div></td>';
                             echo '<td>';
                             // echoing the search result(s) first and last name
@@ -177,6 +180,7 @@ require_once "header.php";
                 }
             }
             else {
+                // The user didn't insert any text into the search bar, so let them know
                 echo '<p class="error">Please insert some text into the search bar.</p>';
             }
             ?>
