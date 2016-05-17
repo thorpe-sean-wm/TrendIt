@@ -157,7 +157,7 @@ require_once "header.php";
                                 echo '<td class="searchResultPicture"><img src="profileImages/' . $row[4] . '" class="searchResultImg"></td>';
                             }
                             else {
-                                echo '<td class="searchResultPicture"><img src="profileImages/avatar.png" class="searchResultImg"></td>';
+                                echo '<td class="searchResultPicture"><img src="profileImages/default.png" class="searchResultImg"></td>';
                             }
                             echo '<td class="searchResultData">';
                             if (!empty($row[0])) {echo '<p style="font-size: 120%"><b><a href="viewprofile.php?user=' . $row[5] . '">' . $row[0] . '</a></b></p>';}
