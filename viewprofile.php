@@ -37,7 +37,7 @@ require_once "header.php";
                 }
                 ?>" alt="Default Avatar" width="173" ></div>
             <div class="friend" align="left">
-                <h4>Following List:</h4>
+                <h4>Following List
                 <?php
                 // Retrieve the score data from MySQL
                 $query = "SELECT * FROM followers WHERE userID = '" . $pageInfo['userID'] . "'";
@@ -45,6 +45,8 @@ require_once "header.php";
                 $stmt = $dbh->prepare($query);
                 $stmt->execute();
                 $results = $stmt->fetchAll();
+
+                echo '(' . count($results) . '):</h4>';
 
                 echo '<ul id="friendslist" class="clearfix" style="list-style-type: none">';
 
@@ -101,10 +103,6 @@ require_once "header.php";
         </div>
         <div class="feed">
             <?php
-            $i = 0;
-            // Connect to the database
-            $dbh = new PDO('mysql:host=127.0.0.1;dbname=trenditdb', 'root', 'root');
-            // Retrieve the score data from MySQL
             $query = "SELECT * FROM posts ORDER BY postTime DESC";
 
             $stmt = $dbh->prepare($query);
