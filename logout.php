@@ -15,8 +15,8 @@ if (isset($_SESSION['userID'])) {
 }
 
 // Delete the user ID and username cookies by setting their expirations to an hour ago (3600)
-setcookie('userID', '', time() - 3600);
-setcookie('username', '', time() - 3600);
+unset($_COOKIE['userID']);
+unset($_COOKIE['username']);
 
 // Redirect to the home page
 header('Location: index.php');

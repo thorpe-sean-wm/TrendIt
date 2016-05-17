@@ -1,5 +1,5 @@
 <?php
-// Insert the page header
+//Insert the page header
 $page_title = 'Sign Up';
 ?>
 
@@ -19,7 +19,7 @@ $page_title = 'Sign Up';
 <div class="headerCont">
     <div class="header">
         <div class="navbar">
-            <a href="javascript:history.go(-1)"><button class="mButton">Back</button></a>
+            <a href="index.php"><button class="mButton">Back</button></a>
         </div>
     </div>
 </div>
@@ -30,18 +30,18 @@ $page_title = 'Sign Up';
 
         echo '<h3>TrendIt - ' . $page_title . '</h3>';
 
-        // Connect to the database
+        //Connect to the database
         $dbh = new PDO('mysql:host=localhost;dbname=trenditdb', 'root', 'root');
 
         if (isset($_POST['submit'])) {
-            // Grab the profile data from the POST
+            //Grab the data from POST
             $username = trim($_POST['username']);
             $password1 = ($_POST['password1']);
             $password2 = ($_POST['password2']);
             $email = ($_POST['email']);
 
             if (!empty($username) && !empty($password1) && !empty($password2) && ($password1 == $password2) && !empty($email)) {
-                // Make sure someone isn't already registered using this username
+                //Check for unique Username
                 $query = "SELECT * FROM users WHERE username = :username AND email = :email";
                 $stmt = $dbh->prepare($query);
                 $stmt->execute(array(
@@ -51,7 +51,7 @@ $page_title = 'Sign Up';
                 $result = $stmt->fetchAll();
 
                 if (count($result) == 0) {
-                    // The username is unique, so insert the data into the database
+                    // If username is unique, insert the data into the database
                     $query = "INSERT INTO users (username, password, email, joinDate) VALUES (:username, SHA(:password1), :email, NOW())";
                     $stmt = $dbh->prepare($query);
                     $stmt->execute(array(
@@ -60,13 +60,13 @@ $page_title = 'Sign Up';
                         'email' => $email
                     ));
 
-                    // Confirm success with the user
+                    //Confirm success with the user
                     echo '<p>Your new account has been successfully created. You\'re now ready to <a href="login.php">log in</a>.</p>';
 
                     exit();
                 }
                 else {
-                    // An account already exists for this username, so display an error message
+                    //Display error message
                     echo '<p class="error">An account already exists for this username. Please use a different address.</p>';
                     $username = "";
                 }

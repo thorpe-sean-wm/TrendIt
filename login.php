@@ -13,8 +13,8 @@ if (!isset($_SESSION['userID'])) {
         $dbh = new PDO('mysql:host=localhost;dbname=trenditdb', 'root', 'root');
 
         // Grab the user-entered log-in data
-        $user_username = trim($_POST['username']);
-        $user_password = ($_POST['password']);
+        $user_username = $_POST['username'];
+        $user_password = $_POST['password'];
 
         if (!empty($user_username) && !empty($user_password)) {
             // Look up the username and password in the database
@@ -32,7 +32,7 @@ if (!isset($_SESSION['userID'])) {
                 $_SESSION['username'] = $row['username'];
                 setcookie('userID', $row['userID'], time() + (60 * 60 * 24 * 30));
                 setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));
-                $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/index.php';
+                $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/viewprofile.php?user=' . $_SESSION['userID'];
                 header('Location: ' . $home_url);
             }
             else {
@@ -47,7 +47,7 @@ if (!isset($_SESSION['userID'])) {
     }
 }
 
-// Insert the page header
+//Insert the page header
 $page_title = 'Log In';
 ?>
 
@@ -61,19 +61,19 @@ $page_title = 'Log In';
 <div class="headerCont">
     <div class="header">
         <div class="navbar">
-            <a href="javascript:history.go(-1)"><button class="mButton">Back</button></a>
+            <a href="index.php"><button class="mButton">Back</button></a>
         </div>
     </div>
 </div>
 <div class="container">
     <video autoplay loop muted poster="empty.png" id="bgvid">
-        <source src="kiwi1.mp4" type="video/mp4">
+        <source src="login.mp4" type="video/mp4">
     </video>
     <div class="content">
         <?php
         echo '<h2>TrendIt - ' . $page_title . '</h2>';
 
-        // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
+        //If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
         if (empty($_SESSION['user_ID'])) {
             echo '<p class="error">' . $error_msg . '</p>';
             ?>

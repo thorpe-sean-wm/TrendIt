@@ -37,7 +37,7 @@ require_once "header.php";
                 }
                 ?>" alt="Default Avatar" width="173" ></div>
             <div class="friend" align="left">
-                <h4>Friends list:</h4>
+                <h4>Following List:</h4>
                 <?php
                 // Retrieve the score data from MySQL
                 $query = "SELECT * FROM followers WHERE userID = '" . $pageInfo['userID'] . "'";
@@ -48,6 +48,7 @@ require_once "header.php";
 
                 echo '<ul id="friendslist" class="clearfix" style="list-style-type: none">';
 
+                //Show each follower and display all information.
                 foreach($results as $following){
 
                     $query = "SELECT * FROM users WHERE userID = :userid";
@@ -59,6 +60,7 @@ require_once "header.php";
                     );
                     $userinfo = $stmt->fetch();
 
+                    //Grab picture
                     if(isset($userinfo['profilePicture'])){
                         $picture = $userinfo['profilePicture'];
                     }
@@ -66,6 +68,7 @@ require_once "header.php";
                         $picture =  'default.png';
                     }
 
+                    //Display Picture and create Link
                     echo '<li><a href="?user=' . $userinfo['userID'] . '"><img src="profileImages/' . $picture . '" width="22" height="22">&nbsp;'. $userinfo['username'] .'</a></li>';
                 }
 
@@ -86,6 +89,7 @@ require_once "header.php";
                 $stmt->execute();
                 $results = $stmt->fetchAll();
 
+                //Display follow or Display settings gear
                 if(count($results) == 0){
                     echo '<a href="follow.php?userID=' . $_GET['user'] . '"><button>Follow ' . $pageInfo['username'] . '</button></a>';
                 }
@@ -140,13 +144,15 @@ require_once "header.php";
                 );
                 $likeCheck = $stmt->fetch();
 
-
+                //Grab picture or default
                 if(isset($userinfo['profilePicture'])){
                     $picture = $userinfo['profilePicture'];
                 }
                 else {
                     $picture =  'default.png';
                 }
+
+                //Display Post
                 echo '<div class="post">';
                 echo '<div class="postUser">';
                 echo '<p><a class="postLink" href="viewprofile.php?user= ' . $userinfo['userID'] . '"><img style="vertical-align:middle" src="profileImages/' . $picture . '" width="22" height="22">&nbsp;' . $userinfo['username'] . ':</a></p>';
@@ -155,17 +161,19 @@ require_once "header.php";
                 echo '<p>' . $posts['post'] . '</p>';
                 echo '</div>';
                 echo '<div class="postUtil">';
-                echo '<form action="postutility.php" method="post" class="postUtilities"><input type="hidden" name="postID" value="' . $posts['postID'] .'">';
+                echo '<form action="postutility.php" method="post" class="postUtilities"><input type="hidden" name="viewID" value="' . $_GET['user'] .'"><input type="hidden" name="postID" value="' . $posts['postID'] .'">';
+                //Display Delete Post utility
                 if($userinfo['userID'] == $_SESSION['userID']){
                     echo '<button type="submit" name="delete" value="1">Delete Post</button>';
                 }
+                //Check if Logged in user has liked the post
                 if($likeCheck['userID'] == $_SESSION['userID']){
                     echo '<button type="submit" name="unlike" value="1">Unlike</button> ' . count($likeAmount);
                 }
                 else{
                     echo '<button type="submit" name="like" value="1">Like</button> ' . count($likeAmount);
                 }
-//                echo '<button>Comments</button>0</p>';
+                //echo '<button>Comments</button>0</p>';
                 echo '</form>';
                 echo '</div>';
                 echo '</div>';

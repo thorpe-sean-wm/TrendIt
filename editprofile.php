@@ -122,10 +122,12 @@ else {
             echo '<div class="editPicture"">';
             echo '<p>Current Profile Picture:</p>';
             echo '<img class="currentPic" src="' . TI_UPLOADPATH . $old_picture . '" alt="Profile Picture" width="150px" height="150px" />';
+            echo '<a href="viewprofile.php?user=' . $_SESSION['userID'] .'"><button class="mButton">Return to Profile</button></a><br><br>';
             echo '</div>';
         } ?>
         <h1>Edit Your User Profile</h1>
         <p><b>Please edit any of your user information below:</b></p><br>
+
 
         <form enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo TI_MAXFILESIZE; ?>" />
@@ -143,10 +145,11 @@ else {
             <label for="phone">Phone Number:</label>
             <input type="text" id="phone" name="phoneNumber" value="<?php if (!empty($phoneNumber)) echo $phoneNumber; else echo '000-000-0000'?>" /><br><br>
             <label for="status">Status:</label>
-            <input type="text" id="status" name="status" value="<?php if (!empty($status)) echo $status; ?>" /><br>
+            <input type="text" id="status" name="status" value="<?php if (!empty($status)) echo $status; ?>" /><br><br>
             <input type="hidden" name="old_picture" value="<?php if (!empty($old_picture)) echo $old_picture; ?>" />
+            <p>Picture's must be no more than 500x500 and less than 64kb.</p>
             <label for="new_picture">Picture:</label>
-            <input type="file" id="new_picture" name="new_picture" />
+            <input type="file" id="new_picture" name="new_picture" /><br><br>
             <button type="submit" name="submit" value="1">Save Your Profile</button>
         </form>
         </div>
