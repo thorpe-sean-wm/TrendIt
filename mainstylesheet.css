@@ -269,10 +269,9 @@ a:hover {
     height: 150px;
     text-align: center;
 }
-.currentPic{
+.currentPic {
     border: 1px #000 solid;
 }
-
 #userBio{
     float: left;
     width: 80%;

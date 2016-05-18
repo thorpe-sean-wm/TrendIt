@@ -36,10 +36,10 @@ else{
             <!--TITLE OF PAGE -->
             <h2>Welcome</h2>
         </header>
-        <p>Your now favorite social media website</p>
+        <p>Your new favorite social media website</p>
         <ul class="actions">
 
-            <li><a href="<?php echo $location ?>" class="button">#DatBoi</a></li>
+            <li><a href="<?php echo $location ?>" class="button">#Trending</a></li>
 
         </ul>
         <div class="log">

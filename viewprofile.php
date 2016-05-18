@@ -29,7 +29,7 @@ require_once "header.php";
         ?>
         <div id="profileLeftBar">
             <div id="userphoto" align="center">
-                <img src="<?php if(isset($pageInfo['profilePicture'])){
+                <img style="border: 1px #000 solid;" src="<?php if(isset($pageInfo['profilePicture'])){
                     echo 'profileImages/' . $pageInfo['profilePicture'];
                 }
                 else {

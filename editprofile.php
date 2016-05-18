@@ -74,7 +74,6 @@ if (isset($_POST['submit'])) {
                 $query = "UPDATE users SET firstName = '$firstName', lastName = '$lastName', gender = '$gender', " .
                     " birthday = '$birthday', phoneNumber = '$phoneNumber', status = '$status' WHERE userID = '" . $_SESSION['userID'] . "'";
             }
-            echo $new_picture;
             $data = $dbh->prepare($query);
             $data->execute();
 
