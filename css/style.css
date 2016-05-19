@@ -224,9 +224,8 @@
 			{
 				display: inline-block;
 				margin-left: 1em;
-                left: 500px;
-                top: 320px;
-				position: absolute;
+				top: 160px;
+				position: relative;
 
 			}
 			

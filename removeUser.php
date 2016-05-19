@@ -44,10 +44,31 @@ require_once 'adminheader.php';
                         'userID' => $id
                     )
                 );
+                $query = "DELETE FROM posts WHERE userID = :userID";
+                $stmt = $dbh->prepare($query);
+                $stmt->execute(
+                    array(
+                        'userID' => $id
+                    )
+                );
+                $query = "DELETE FROM followers WHERE userID = :userID OR followingID = :userID";
+                $stmt = $dbh->prepare($query);
+                $stmt->execute(
+                    array(
+                        'userID' => $id
+                    )
+                );
+                $query = "DELETE FROM likes WHERE userID = :userID";
+                $stmt = $dbh->prepare($query);
+                $stmt->execute(
+                    array(
+                        'userID' => $id
+                    )
+                );
                 echo '<p>The user, ' . $name . ' was successfully removed.';
             }
             else {
-                echo '<p class="error">The high score was not removed.</p>';
+                echo '<p class="error">The user was not removed.</p>';
             }
         }
 
@@ -64,7 +85,7 @@ require_once 'adminheader.php';
             echo '<input type="hidden" name="email" value="' . $email . '" />';
             echo '</form>';
         }
-        echo '<p><a href=admin.php>Return to admin page</a></p>';
+        echo '<p><a href=admin.php>&lt;&lt; Return to admin page</a></p>';
         ?>
     </div>
 </div>

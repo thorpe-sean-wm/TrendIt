@@ -28,7 +28,7 @@ else{
 <body class="homepage">
 <div id="header-wrapper">
     <div id="header" class="container">
-        <h1 id="logo"><a href="<?php echo $location ?>">Trendit</a></h1>
+        <h1 id="logo"><a href="<?php echo $location ?>">TrendIt</a></h1>
 
     </div>
     <section id="hero" class="container">

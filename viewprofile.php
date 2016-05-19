@@ -14,6 +14,15 @@
 <body>
 <?php
 require_once "header.php";
+
+if(empty($_GET['user'])){
+    if(isset($_SESSION['userID'])){
+        header('Location: viewprofile.php?user=' . $_SESSION['userID']);
+    }
+    else{
+        header('Location: login.php');
+    }
+}
 ?>
 <div class="container">
     <div class="content">

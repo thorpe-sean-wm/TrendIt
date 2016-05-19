@@ -83,6 +83,7 @@ $page_title = 'Log In';
                     <input type="password" name="password" placeholder="Password" class="formInput" /> <br>
                 <input type="submit" value="Log In" name="submit" class="logIn" />
             </form>
+            <p><a style="float: right; padding-right: 20px" href="signup.php">Don't have an account? &gt;&gt;</a></p>
 
             <?php
         }

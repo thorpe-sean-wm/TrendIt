@@ -63,7 +63,7 @@ $page_title = 'Sign Up';
                     ));
 
                     //Confirm success with the user
-                    echo '<p>Your new account has been successfully created. You\'re now ready to <a href="login.php">log in</a>.</p>';
+                    echo '<p>Your new account has been successfully created. </p><p><a href="login.php">You\'re now ready to log in</a>.</p>';
 
                     exit();
                 }
@@ -88,6 +88,7 @@ $page_title = 'Sign Up';
                 <input type="text" id="email" name="email" placeholder="Email" class="formInput" /><br />
             <input type="submit" value="Sign Up" name="submit" class="signUp"/>
         </form>
+        <p style="text-align: left; padding-left: 20px"><a style="text-align: left;" href="login.php">&lt;&lt;Already have an account?</a></p>
     </div>
 </div>
 </body>
